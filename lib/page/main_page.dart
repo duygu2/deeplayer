@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:deeplayer/page/video_player_page.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:video_player/video_player.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -29,7 +31,7 @@ class _MainPageState extends State<MainPage> {
               ? AspectRatio(
                   aspectRatio: 1.5,
                   child: Container(
-                    color: Colors.pink[200],
+                    color: Colors.grey[200],
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -61,6 +63,14 @@ class _MainPageState extends State<MainPage> {
                 },
                 child: Text('Pick Image Gallery'),
               ),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => VideoPlayerPage())));
+                  },
+                  child: Text("Create video"))
             ],
           ),
         ],
