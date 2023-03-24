@@ -38,6 +38,7 @@ dependencies:
   video_player: ^2.5.3
   chewie: ^1.4.0
   
+  http: ^0.13.5
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
