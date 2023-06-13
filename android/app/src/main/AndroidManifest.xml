@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.deeplayer">
    <application
+   android:usesCleartextTraffic="true"
         android:label="deeplayer"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
@@ -32,4 +33,7 @@
             android:value="2" />
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
+    
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 </manifest>

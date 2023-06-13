@@ -1,34 +1,49 @@
 import 'dart:io';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayerPage extends StatefulWidget {
-  const VideoPlayerPage({Key? key});
+  final String videoPath;
+
+  VideoPlayerPage({required this.videoPath});
 
   @override
-  State<VideoPlayerPage> createState() => _VideoPlayerPageState();
+  _VideoPlayerPageState createState() => _VideoPlayerPageState();
 }
 
 class _VideoPlayerPageState extends State<VideoPlayerPage> {
   late VideoPlayerController _controller;
-  late Future<void> _video;
+  late Future<void> _initializeVideoPlayerFuture;
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.network(
-        "https://sample-videos.com/video123/mp4/480/big_buck_bunny_480p_1mb.mp4");
-    _video = _controller.initialize();
+    print(widget.videoPath);
+    _controller = VideoPlayerController.file(File(widget.videoPath));
+
+    _initializeVideoPlayerFuture = _controller.initialize().then((_) {
+      setState(() {
+        _controller.setLooping(true);
+        _controller.play();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Video Player'),
+      ),
       body: FutureBuilder(
-        future: _video,
+        future: _initializeVideoPlayerFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return AspectRatio(
@@ -43,11 +58,5 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
         },
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
   }
 }
