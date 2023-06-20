@@ -1,4 +1,5 @@
 import 'package:deeplayer/page/main_page.dart';
+import 'package:deeplayer/page/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:deeplayer/page/request_page.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainPage(),
+      home: SplashScreen(),
     );
   }
 }

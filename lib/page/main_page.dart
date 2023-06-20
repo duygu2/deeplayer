@@ -21,7 +21,20 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Media Selection'),
+        title: const Text(
+          'Medya Seçimi',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor:
+            Color.fromARGB(255, 0, 74, 173), // AppBar'ın arka plan rengi
+        elevation: 0, // AppBar'ın gölgelendirme efekti
+        centerTitle: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5), // Butonun kenar yuvarlatma
+        ), // Başlığın ortalanması
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -30,27 +43,60 @@ class _MainPageState extends State<MainPage> {
             child: Center(
               child: _selectedImage != null
                   ? Image.file(_selectedImage!)
-                  : const Text('No image selected'),
+                  : const Text('Resim Seçilmedi'),
             ),
           ),
           ElevatedButton(
             onPressed: _pickImage,
-            child: const Text('Pick Image'),
+            child: const Text('Resim Seçiniz'),
+            style: ElevatedButton.styleFrom(
+              primary:
+                  Color.fromARGB(255, 0, 74, 173), // Butonun arka plan rengi
+              onPrimary: Colors.white, // Butonun metin rengi
+              shape: RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.circular(10), // Butonun kenar yuvarlatma
+              ),
+              padding: EdgeInsets.symmetric(
+                  horizontal: 20, vertical: 10), // Butonun iç içe boşluğu
+            ),
           ),
           Expanded(
             child: Center(
               child: _selectedVideo != null
-                  ? Text('Video selected: ${_selectedVideo!.path}')
-                  : const Text('No video selected'),
+                  ? Text('Video seçildi: ${_selectedVideo!.path}')
+                  : const Text('Video Seçilmedi'),
             ),
           ),
           ElevatedButton(
             onPressed: _pickVideo,
-            child: const Text('Pick Video'),
+            child: const Text('Video Seçiniz'),
+            style: ElevatedButton.styleFrom(
+              primary:
+                  Color.fromARGB(255, 0, 74, 173), // Butonun arka plan rengi
+              onPrimary: Colors.white, // Butonun metin rengi
+              shape: RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.circular(10), // Butonun kenar yuvarlatma
+              ),
+              padding: EdgeInsets.symmetric(
+                  horizontal: 20, vertical: 10), // Butonun iç içe boşluğu
+            ),
           ),
           ElevatedButton(
             onPressed: _createVideo,
-            child: const Text('Create Video'),
+            child: const Text('Video Oluştur'),
+            style: ElevatedButton.styleFrom(
+              primary:
+                  Color.fromARGB(255, 230, 13, 13), // Butonun arka plan rengi
+              onPrimary: Colors.white, // Butonun metin rengi
+              shape: RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.circular(10), // Butonun kenar yuvarlatma
+              ),
+              padding: EdgeInsets.symmetric(
+                  horizontal: 20, vertical: 10), // Butonun iç içe boşluğu
+            ),
           ),
         ],
       ),
@@ -83,8 +129,8 @@ class _MainPageState extends State<MainPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: const Text('Error'),
-            content: const Text('Please select an image and a video.'),
+            title: const Text('Hata'),
+            content: const Text('Lütfen resim ve video seçiniz.'),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
@@ -122,9 +168,10 @@ class _MainPageState extends State<MainPage> {
           MaterialPageRoute(
             builder: (context) {
               final videoPath = jsonDecode(response.body)['result'];
-              print("Video Yolu: $videoPath"); // Print the video path
+              final modifiedVideoPath = videoPath.replaceAll("\\", '/');
+              print("Video Yolu: $modifiedVideoPath"); // Print the video path
               return VideoPlayerPage(
-                videoPath: videoPath,
+                videoPath: modifiedVideoPath,
               );
             },
           ),
