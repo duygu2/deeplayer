@@ -1,16 +1,15 @@
-# deeplayer
+# deePlayer
 
-A new Flutter project.
+Final year project.
 
-## Getting Started
+Splash Screen
+![image](https://github.com/duygu2/deeplayer/assets/56012686/1cdb9007-f173-4468-baf1-8b9ee294824e)
 
-This project is a starting point for a Flutter application.
+Alert Screen
+![image](https://github.com/duygu2/deeplayer/assets/56012686/70bfc2e6-668c-4ba6-b34e-b2b04105e772)
 
-A few resources to get you started if this is your first Flutter project:
+Media Select Screen (image and video are selected)
+![image](https://github.com/duygu2/deeplayer/assets/56012686/22025d76-803d-4980-a83b-3e2b3b66b253)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Video Playback Screen
+![image](https://github.com/duygu2/deeplayer/assets/56012686/de0a941e-1d9f-41b4-adaf-f25e3aa6b992)
