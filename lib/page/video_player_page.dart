@@ -58,11 +58,11 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
       print('Video saved to: $savePath');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Video downloaded successfully.'),
+          content: Text('Video İndirildi.'),
         ),
       );
     } else {
-      print('Failed to access external storage directory.');
+      print('Harici depolama dizinine erişilemedi.');
     }
   }
 
